@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IPMA 刷題庫</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="container">
+    <section class="card">
+      <div class="top-bar">
+        <div>
+          <h1>IPMA 刷題庫</h1>
+          <p id="progress">載入中...</p>
+        </div>
+
+        <div class="right-panel">
+          <div class="score-box">
+            答對：<span id="correctCount">0</span>
+          </div>
+
+          <div class="mode-buttons">
+            <button id="allModeBtn" class="small-btn active" type="button">全部題目</button>
+            <button id="randomModeBtn" class="small-btn" type="button">隨機出題</button>
+            <button id="wrongModeBtn" class="small-btn" type="button">錯題本</button>
+            <button id="quizModeBtn" class="small-btn" type="button">測驗模式（50題）</button>
+            <button id="clearWrongBtn" class="small-btn danger" type="button">清除錯題</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="question-box">
+        <h2 id="questionText">題目載入中...</h2>
+      </div>
+
+      <div id="optionsBox" class="options"></div>
+
+      <button id="submitBtn" class="primary-btn" type="button" disabled>送出答案</button>
+
+      <section id="resultBox" class="result hidden">
+        <p id="resultText"></p>
+        <p id="yourAnswer"></p>
+        <p id="correctAnswer"></p>
+
+        <div class="explanation">
+          <h3>詳解</h3>
+          <p id="explanationText"></p>
+        </div>
+
+        <div class="meta">
+          <p id="explanationSource"></p>
+          <p id="referenceSource"></p>
+          <p id="reviewStatus"></p>
+        </div>
+
+        <button id="nextBtn" class="primary-btn" type="button">下一題</button>
+      </section>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
