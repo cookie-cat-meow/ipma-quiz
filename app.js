@@ -31,6 +31,8 @@ const randomModeBtn = document.getElementById("randomModeBtn");
 const wrongModeBtn = document.getElementById("wrongModeBtn");
 const quizModeBtn = document.getElementById("quizModeBtn");
 const clearWrongBtn = document.getElementById("clearWrongBtn");
+const jumpInput = document.getElementById("jumpInput");
+const jumpBtn = document.getElementById("jumpBtn");
 
 function getWrongQuestionIds() {
   try {
@@ -140,6 +142,46 @@ function setMode(mode) {
   buildActiveQuestions();
   updateModeButtons();
   renderQuestion();
+}
+
+function jumpToQuestion() {
+  const targetId = Number(jumpInput.value);
+
+  if (!Number.isInteger(targetId)) {
+    alert("請輸入有效的題號。");
+    return;
+  }
+
+  if (targetId < 1 || targetId > allQuestions.length) {
+    alert(`題號範圍為 1 到 ${allQuestions.length}。`);
+    return;
+  }
+
+  if (currentMode === "quiz") {
+    alert("測驗模式中不支援跳題，請先切回全部題目、隨機出題或錯題本模式。");
+    return;
+  }
+
+  const targetIndex = allQuestions.findIndex((question) => question.id === targetId);
+
+  if (targetIndex === -1) {
+    alert("找不到這個題號。");
+    return;
+  }
+
+  currentMode = "all";
+  activeQuestions = [...allQuestions];
+  currentIndex = targetIndex;
+  selectedAnswer = null;
+  answered = false;
+
+  resultBox.classList.add("hidden");
+  submitBtn.style.display = "block";
+
+  updateModeButtons();
+  renderQuestion();
+
+  jumpInput.value = "";
 }
 
 async function loadQuestions() {
@@ -491,5 +533,13 @@ randomModeBtn.addEventListener("click", () => setMode("random"));
 wrongModeBtn.addEventListener("click", () => setMode("wrong"));
 quizModeBtn.addEventListener("click", () => setMode("quiz"));
 clearWrongBtn.addEventListener("click", clearWrongQuestions);
+
+jumpBtn.addEventListener("click", jumpToQuestion);
+
+jumpInput.addEventListener("keydown", (event) => {
+  if (event.key === "Enter") {
+    jumpToQuestion();
+  }
+});
 
 loadQuestions();
