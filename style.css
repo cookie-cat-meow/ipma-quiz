@@ -387,18 +387,37 @@ h1 {
 
 .jump-box {
   display: flex;
-  gap: 8px;
+  gap: 10px;
   justify-content: flex-end;
+  align-items: center;
   width: 100%;
 }
 
 .jump-box input {
-  width: 120px;
-  padding: 10px 12px;
+  width: 190px;
+  height: 44px;
+  padding: 10px 14px;
   border: 1px solid #d1d5db;
   border-radius: 12px;
-  font-size: 15px;
+  font-size: 18px;
   font-weight: 700;
+}
+
+.jump-box input::placeholder {
+  color: #9ca3af;
+  font-weight: 600;
+}
+
+.jump-box input:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.15);
+}
+
+.jump-box button {
+  height: 44px;
+  min-width: 72px;
+  font-size: 16px;
 }
 
 .jump-box input:focus {
@@ -410,5 +429,10 @@ h1 {
 @media (max-width: 900px) {
   .jump-box {
     justify-content: flex-start;
+    width: 100%;
+  }
+
+  .jump-box input {
+    width: 180px;
   }
 }
