@@ -355,7 +355,7 @@ function submitQuizAnswer() {
     selectedAnswer,
     correctAnswer: question.correctAnswer,
     isCorrect,
-    aiExplanation: question.aiExplanation || "目前尚未建立 LLM 詳解。",
+    aiExplanation: question.aiExplanation || "目前尚未建立詳解。",
     explanationSource: question.explanationSource || "無",
     explanationGenerator: question.explanationGenerator || "無",
     explanationModel: question.explanationModel || "無",
@@ -416,7 +416,7 @@ function renderQuizSummary() {
         <p>正確答案：${item.correctAnswer}. ${escapeHtml(item.options[item.correctAnswer])}</p>
 
         <div class="review-explanation">
-          <strong>LLM 詳解</strong>
+          <strong>詳解</strong>
           <p>${escapeHtml(item.aiExplanation)}</p>
           <div class="review-meta">
             <p>詳解來源：${escapeHtml(item.explanationSource)}｜${escapeHtml(item.explanationGenerator)}｜${escapeHtml(item.explanationModel)}</p>
